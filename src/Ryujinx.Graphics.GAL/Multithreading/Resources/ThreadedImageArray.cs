@@ -21,9 +21,9 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Resources
             return new TableRef<T>(_renderer, reference);
         }
 
-        public void SetFormats(int index, Format[] imageFormats)
+        public void Dispose()
         {
-            _renderer.New<ImageArraySetFormatsCommand>().Set(Ref(this), index, Ref(imageFormats));
+            _renderer.New<ImageArrayDisposeCommand>().Set(Ref(this));
             _renderer.QueueCommand();
         }
 
